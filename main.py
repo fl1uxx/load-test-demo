@@ -13,3 +13,16 @@ def get_users():
 @app.get("/health")
 def health():
     return {"status": "ok"}
+
+def is_valid_username(username: str | None) -> bool:
+    """Пайдаланушы атын тексеру."""
+    if not username:
+        return False
+
+    if len(username) < 3:
+        return False
+
+    if not username.isalnum():
+        return False
+
+    return True
