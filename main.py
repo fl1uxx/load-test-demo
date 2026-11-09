@@ -14,15 +14,12 @@ def get_users():
 def health():
     return {"status": "ok"}
 
+
 def is_valid_username(username: str | None) -> bool:
     """Пайдаланушы атын тексеру."""
-    if not username:
-        return False
+    return bool(
+        username
+        and len(username) >= 3
+        and username.isalnum()
+    )
 
-    if len(username) < 3:
-        return False
-
-    if not username.isalnum():
-        return False
-
-    return True
